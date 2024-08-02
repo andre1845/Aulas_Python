@@ -1,0 +1,1 @@
+Pasta para trabalhos entregues nas aula de PYTHON SENAI
