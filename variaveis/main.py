@@ -27,6 +27,6 @@ print('Nome: ' + nome + '.')
 # O sinal + serve para concatenar APENAS string
 
 nome2 = 'Andre'
-idade = 45
+idade = 48
 
 print('Nome: '+nome2+' idade: '+str(45))
