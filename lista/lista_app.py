@@ -14,3 +14,5 @@ for i in range(len(nomes)):
     print(f'{i + 1} nome: {nome[i]}')
 
 print(nomes[0][-3])
+
+print(type(nomes))
