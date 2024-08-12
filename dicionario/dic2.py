@@ -15,7 +15,7 @@ while True:
     continuar = input('Continuar ? s/n : ')
     if continuar == 'n':
         for i in range(len(lista_usuarios)):
-                print(lista_usuarios[i])
+                print('cliente '+[i])
                 print(lista_usuarios[i]['nome'])
                 print(lista_usuarios[i]['idade'])
                 print(lista_usuarios[i]['cpf'])                
