@@ -76,16 +76,15 @@ while True:
             x = 0
             for cliente in clientes:
                 if cliente['Nome'] == pesquisar:
-                    print(f'Indice {i}: {cliente['Nome']}')
                     x = x + 1
+                    enc = i
                     continue
                 else:
-                    print(i)
                     i = i + 1
             if x == 0:
                 print('Nenhum cliente encontrado')
             else :
-                print (x)
+                print(f'Indice {enc}: {clientes[enc]['Nome']}')
                 continue
         case '6': # PESQUISAR
             pesquisar = input('Qual o nome do cliente a ser pesquisado? ')
