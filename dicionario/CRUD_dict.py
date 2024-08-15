@@ -74,17 +74,21 @@ while True:
             pesquisar = input('Qual o nome do cliente a ser pesquisado? ')
             i = 0
             x = 0
+            enc = 0
+            cliente_enc = {}
             for cliente in clientes:
                 if cliente['Nome'] == pesquisar:
                     x = x + 1
                     enc = i
-                    continue
+                    cliente_enc = cliente[enc]
                 else:
                     i = i + 1
             if x == 0:
                 print('Nenhum cliente encontrado')
             else :
-                print(f'Indice {enc}: {clientes[enc]['Nome']}')
+                print(f'Cliente {enc + 1}: ')
+                for chave in dados:
+                    print(f'{chave}: {cliente_enc.get('{chave}','xx')}')
                 continue
         case '6': # PESQUISAR
             pesquisar = input('Qual o nome do cliente a ser pesquisado? ')
@@ -93,7 +97,7 @@ while True:
                 for i, cliente in enumerate(encontrados, start=1):
                     print(f'Cliente {i}  ' + '+'*20)
                     for chave in dados:
-                        print(f'{chave} : {cliente.get(chave, "Não informado")}')
+                        print(f'{chave} : {cliente.get({chave}, "Não informado")}')
                     print('-'*30)
             else:
                 print('Nenhum cliente encontrado.')        
