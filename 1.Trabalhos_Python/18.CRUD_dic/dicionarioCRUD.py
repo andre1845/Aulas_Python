@@ -1,32 +1,5 @@
 import os
 
-def validar_cpf(cpf):
-    # Remove caracteres não numéricos
-    cpf = ''.join(filter(str.isdigit, cpf))
-
-    # Verifica se o CPF tem 11 dígitos
-    if len(cpf) != 11:
-        return False
-
-    # Verifica se todos os dígitos são iguais
-    if cpf == cpf[0] * len(cpf):
-        return False
-
-    # Calcula o primeiro dígito verificador
-    soma = sum(int(cpf[i]) * (10 - i) for i in range(9))
-    digito1 = 11 - (soma % 11)
-    if digito1 >= 10:
-        digito1 = 0
-
-    # Calcula o segundo dígito verificador
-    soma = sum(int(cpf[i]) * (11 - i) for i in range(10))
-    digito2 = 11 - (soma % 11)
-    if digito2 >= 10:
-        digito2 = 0
-
-    # Verifica se os dígitos calculados são iguais aos dígitos fornecidos
-    return cpf[-2:] == f"{digito1}{digito2}"
-
 clientes = []
 
 dados = ('Nome', 'Data de Nascimento', 'CPF', 'Profissão', 'Email', 'Endereço', 'Telefone',)
@@ -47,12 +20,7 @@ while True:
         case '1':  # INCLUIR
             novo_cliente = {}
             for chave in dados:
-                novo_cliente[chave] = input(f'Digite o(a) {chave} do cliente: ')
-                if chave == 'CPF':
-                    if validar_cpf(novo_cliente['CPF']):
-                        novo_cliente['CPF'] = novo_cliente['CPF']
-                    else:
-                        novo_cliente['CPF'] = 'CPF inválido'                
+                novo_cliente[chave] = input(f'Digite o(a) {chave} do cliente: ')             
             clientes.append(novo_cliente)
             continue
         case '2':  # LISTAR
