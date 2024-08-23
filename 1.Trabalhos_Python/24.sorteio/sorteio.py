@@ -49,6 +49,7 @@ while True:
         case '2':
             print('-'*50)
             if nomes:
+                nomes.sort()
                 print("Nomes na lista:")
                 for nome in nomes:
                     print(f"- {nome}")
