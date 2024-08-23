@@ -11,7 +11,7 @@ def fibonacci(valor):
         else:
             proximo_valor = numero[i-1] + numero[i-2]
             numero.append(proximo_valor)
-            i += 1  # Incrementa o contador
+            i += 1 
     return numero
 
 while True:
