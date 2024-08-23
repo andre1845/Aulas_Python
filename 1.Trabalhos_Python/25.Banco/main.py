@@ -46,14 +46,21 @@ while True:
     match opcao:
         case '1':
             novo_cliente = {}
-            novo_cliente['Nome'] = input('Nome: ')
-            novo_cliente['Senha'] = input('Senha: ')
+            for chave in chave_pessoa:
+                novo_cliente[chave] = input(f'{chave}: ')
             clientes.append(novo_cliente)            
             continue
-                      
-            
+
         case '2':
-            for cliente in clientes:
+            for i, cliente in enumerate(clientes):
+                print(f'Cliente {i} ' + '-'*50)
                 for chave in chave_pessoa:
                     print(f'{chave} - {cliente[chave]}')
             break
+        
+        case '3':
+            cc = 0
+            conta = input('Para qual cliente deseja abrir conta?')
+            if conta in clientes[nome]:
+                conta_numero = cc + 1
+                
