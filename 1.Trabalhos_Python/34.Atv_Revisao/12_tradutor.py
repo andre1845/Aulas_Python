@@ -1,0 +1,1 @@
+# 12. Crie um programa que traduza qualquer texto em qualquer idioma para o português.

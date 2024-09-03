@@ -1,0 +1,1 @@
+# 11. Crie um programa com funções para calcular a área de 4 figuras geométricas (quadrado, círculo, triângulo e trapézio).
