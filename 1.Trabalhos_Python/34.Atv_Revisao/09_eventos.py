@@ -1,5 +1,6 @@
 # 9. Crie um programa onde o usuário cadastre uma quantidade desejada de eventos (nome do evento e classificação indicativa) e após o cadastro dos eventos, o usuário possa informar o nome e a idade, e se inscrever em um dos eventos. Caso o usuário não tenha idade mínima, o programa proíbe a inscrição e pede para o mesmo se inscrever em outro evento. Caso o usuário tenha a idade mínima, o programa inscreve o usuário exibindo a data da inscrição e encerra.
 import os
+import datetime
 
 def verifica_idade(idade, classificacao):
     if idade >= classificacao:
@@ -63,6 +64,8 @@ while True:
                 continue
         
             case '5':  # ESCOLHER indice
+                nome = input ('Digite seu nome: ')
+                data_atual = datetime.datetime.now()
                 pesquisar = input('Qual o nome da atividade escolhida? ')
                 encontrada = [ atividade for atividade in atividades if atividade.get('Nome') == pesquisar]
                 if encontrada:
@@ -71,8 +74,10 @@ while True:
                         try:
                             idade = input('Qual a sua idade? ')
                             idade = int(idade)
-                            grupo = verifica_idade(idade, classif)
-                            print(grupo)
+                            verif = verifica_idade(idade, classif)
+                            print(verif)
+                            print(f'{nome} inscrito em {encontrada[0]['Nome']} em {data_atual}')
+                            
                             break
                         except:
                             print('Idade inválida. Digite um número inteiro e positivo.')
