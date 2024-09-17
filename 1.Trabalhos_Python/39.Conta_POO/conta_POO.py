@@ -5,10 +5,12 @@ if __name__ == "__main__":
     contas_abertas = []
     
     def menuConta():
+        print('>'*20 +'  MENU  ' + '<'*20)
         print('1 - Consultar Saldo')
         print('2 - Sacar')
         print('3 - Depositar')
-        print('4 - Sair')
+        print('4 - Listar contas abertas')
+        print('5 - Sair')
         
     def numero_positivo(mensagem):
         while True:
@@ -23,9 +25,6 @@ if __name__ == "__main__":
             except ValueError:
                 print("Entrada inválida. Por favor, insira um número válido.")
                 continue
-   
-    
-    
     # Criando um gerador de contas
     gerador = md.GeradorDeContas()
     
@@ -75,42 +74,40 @@ if __name__ == "__main__":
                         continue
                     case '2':
                         valor = numero_positivo('Digite o valor a ser sacado: ')
+                        saldo = conta_encontrada.consultar_saldo()
+                        novo_saldo = saldo-valor
+                        if (novo_saldo < 0):
+                            print('Saldo insuficiente para o saque solicitado.')
+                            valor = 0
                         conta_encontrada.fazer_saque(valor)
+                        print('.'*50)
                         continue
                     case '3':
                         valor = numero_positivo('Digite o valor a ser depositado: ')
                         conta_encontrada.fazer_deposito(valor)
                         continue
                     case '4':
+                        print('-'*50)
+                        print(' ---  CONTAS ABERTAS  ---')
+                        for conta in contas_abertas:
+                            print('-'*50)
+                            print(f'Cliente: {conta.nome}')
+                            print(f'CPF: {conta.cpf}')
+                            print(f'Agencia: {conta.agencia}')
+                            print(f'Conta Corrente: {conta.conta}')
+                            print(f'Saldo: {conta.saldo:.2f}')
+                            print('.'*50)
+                        continue
+                    case '5':
                         print(f'Fim da operação na conta: {conta_encontrada.conta}')
+                        print('.'*50)
                         break
                     case _:
                         print('Opção inválida')
+                        print('.'*50)
                         continue
         opcao = input('Deseja consultar outra conta? s/n ')
         if opcao.lower() != 's':
+            print('x'*50)
+            print('FIM')
             break
-       
-    print('-'*50)
-    print(' ---  CONTAS ABERTAS  ---')
-    for conta in contas_abertas:
-        print('-'*50)
-        print(f'Cliente: {conta.nome}')
-        print(f'CPF: {conta.cpf}')
-        print(f'Agencia: {conta.agencia}')
-        print(f'Conta Corrente: {conta.conta}')
-        print(f'Saldo: {conta.saldo:.2f}')
-    
-    
-        '''
-            
-            # Procurar a conta correspondente
-    conta_encontrada = None
-    for conta in contas_abertas:
-        if conta.conta == int(numero_conta):
-            conta_encontrada = conta
-            break  # Saia do loop quando a conta for encontrada
-        else:
-            print(f"Conta {numero_conta} não encontrada.")
-            
-            '''
