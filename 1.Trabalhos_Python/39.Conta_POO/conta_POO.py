@@ -5,6 +5,7 @@ if __name__ == "__main__":
     contas_abertas = []
     
     def menuConta():
+        print('\n')
         print('>'*20 +'  MENU  ' + '<'*20)
         print('1 - Consultar Saldo')
         print('2 - Sacar')
@@ -32,8 +33,9 @@ if __name__ == "__main__":
     
         cc = md.ContaCorrente('','', '', '', 0)
         
-        cc.nome = input('Qual o nome?')
-        cc.cpf = input('Qual o CPF?')
+        cc.nome = input('Qual o nome? ')
+        cc.cpf = input('Qual o CPF? ')
+        print('\n')
         cc.agencia = '1001'
         cc.conta = gerador.gerar_numero_conta()
         
@@ -107,6 +109,9 @@ if __name__ == "__main__":
                         print('.'*50)
                         continue
         opcao = input('Deseja consultar outra conta? s/n ')
+        print("Contas cadastradas:")
+        for conta in contas_abertas:
+            print(f'Conta Corrente: {conta.conta} - Cliente: {conta.nome}')
         if opcao.lower() != 's':
             print('x'*50)
             print('FIM')
