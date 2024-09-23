@@ -2,45 +2,60 @@ class Carro:
     def __init__(self, modelo, cor):
         self.__modelo = modelo
         self.__cor = cor
+        self.carros_disponiveis = []
 
     @property
-    def _modelo(self):
+    def modelo(self):
         return self.__modelo
 
-    @_modelo.setter
-    def _modelo(self, value):
-        self.__modelo = value
+    @modelo.setter
+    def modelo(self, value):
+        self.modelo = value
 
     @property
-    def _cor(self):
+    def cor(self):
         return self.__cor
 
-    @_cor.setter
-    def _cor(self, value):
+    @cor.setter
+    def cor(self, value):
         self.__cor = value
         
-        
+    def incluir_carro(self,carro):
+        if carro not in self.carros_disponiveis:
+            self.carros_disponiveis.append(carro)
+            
+    def listar_carros(self):
+        for carro in self.carros_disponiveis:
+            print(f'{carro.modelo} - {carro.cor}')
+            
 class Cliente:
     def __init__(self, nome, cpf):
         self.__nome = nome
         self.__cpf = cpf
+        self.escolha = []
 
     @property
-    def _nome(self):
+    def nome(self):
         return self.__nome
 
-    @_nome.setter
-    def _nome(self, value):
+    @nome.setter
+    def nome(self, value):
         self.__nome = value
 
     @property
-    def _cpf(self):
+    def cpf(self):
         return self.__cpf
 
-    @_cpf.setter
-    def _cpf(self, value):
+    @cpf.setter
+    def cpf(self, value):
         self.__cpf = value
 
+    def escolher_carro(self, carro):
+        self.escolha.append(carro)
+    
+    def consultar_escolha(self, cliente):
+        return self.escolha
+        
         
 
     
