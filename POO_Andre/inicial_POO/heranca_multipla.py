@@ -1,4 +1,4 @@
-from modulo_heranca_mult import *
+from POO_Andre.inicial_POO.modulo_heranca_mult import *
    
 
 if __name__ == '__main__':
