@@ -1,0 +1,23 @@
+[
+    {
+        "Codigo": 0,
+        "Nome": "Admin",
+        "CPF": "000.000.000-00",
+        "E-mail": "admin@admin.com",
+        "Profissao": "Admininstrador"
+    },
+    {
+        "Codigo": 1,
+        "Nome": "Jalin",
+        "CPF": "111.000.000-00",
+        "E-mail": "jalin@email.com",
+        "Profissao": "Estudante"
+    },
+    {
+        "Codigo": 2,
+        "Nome": "Alfa",
+        "Cpf": "444",
+        "Email": "333",
+        "Profissao": "4445555"
+    }
+]

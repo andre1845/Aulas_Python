@@ -1,0 +1,37 @@
+[
+    {
+        "Codigo": 0,
+        "Nome": "Admin",
+        "CPF": "000.000.000-00",
+        "E-mail": "admin@admin.com",
+        "Profissao": "Admininstrador"
+    },
+    {
+        "Codigo": 1,
+        "Nome": "aa",
+        "Cpf": "ss",
+        "Email": "dd",
+        "Profissao": "ff"
+    },
+    {
+        "Codigo": 2,
+        "Nome": "bruna",
+        "Cpf": "999",
+        "Email": "email@teste",
+        "Profissao": "nenhuma"
+    },
+    {
+        "Codigo": 3,
+        "Nome": "Marcos",
+        "Cpf": "777",
+        "Email": "rere",
+        "Profissao": "jogador"
+    },
+    {
+        "Codigo": 4,
+        "Nome": "Mario Silva",
+        "Cpf": "666555444",
+        "Email": "mario@ese",
+        "Profissao": "matematico"
+    }
+]
