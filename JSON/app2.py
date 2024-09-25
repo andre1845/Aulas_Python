@@ -13,13 +13,14 @@ def encontrar_usuario_por_codigo(usuarios, codigo):
             return usuario
     return None
 
-if __name__=="__main__":
+if __name__ == "__main__":
     
-    p = Pessoa(0,'','','','')
+    p = Pessoa(0, '', '', '', '')
     m = Manipulador()
     
-    while True:
+    ler_arquivo = ''  # Inicializa para verificar se um arquivo foi carregado
     
+    while True:
         print("1 - Criar novo arquivo JSON")
         print("2 - Ler arquivo JSON")
         print("3 - Gravar no arquivo JSON")
@@ -27,7 +28,7 @@ if __name__=="__main__":
         print("5 - Excluir no arquivo")
         print("0 - Sair")
         
-        opcao = input("Digite a opcao: ")
+        opcao = input("Digite a opção: ")
         os.system('cls')
         
         match opcao:
@@ -37,19 +38,20 @@ if __name__=="__main__":
             case '1':
                 novo_arquivo = input("Nome do arquivo a ser criado: ")
                 print(m.criar_arquivo(novo_arquivo))
+                ler_arquivo = novo_arquivo  # Definimos o novo arquivo como o atual
                 continue
             case '2':
                 ler_arquivo = input("Qual arquivo deseja abrir? ")
                 try:
                     os.system('cls')
                     usuarios = m.abrir_arquivo(ler_arquivo)
-                    print(f"Arquivo aberto: {ler_arquivo}.json\n ")
-                    for i in range(len(usuarios)):
-                        for campo, valor in usuarios[i].items():
+                    print(f"Arquivo aberto: {ler_arquivo}.json\n")
+                    for usuario in usuarios:
+                        for campo, valor in usuario.items():
                             print(f"{campo.capitalize()}: {valor}")
                         print(f"\n{'-'*30}\n")
                 except Exception as e:
-                    print('Não foi possivel abrir o arquivo.')
+                    print(f"Não foi possível abrir o arquivo. Erro: {e}")
                 finally:
                     continue
             case '3':
@@ -58,83 +60,66 @@ if __name__=="__main__":
                     continue
                 
                 try:
-                    usuario = {}
-                    campos = ('nome', 'cpf', 'email', 'profissao')
-                    
-                    # Garante que o arquivo foi lido
                     usuarios = m.abrir_arquivo(ler_arquivo)
+                    print(f"Gravando no arquivo: {ler_arquivo}.json\n")
                     
-                    print(f"Gravando no arquivo: {ler_arquivo}.json\n ")
-                     # Define o código do novo usuário como o próximo número na lista
-                    '''
-                    usuario['Codigo'] = len(usuarios)
-                    
-                    # Coleta as informações do novo usuário
-                    for campo in campos:
-                        usuario[campo.capitalize()] = input(f"Informe {campo.capitalize()}: ")
-                    
-                    # Adiciona o novo usuário à lista
-                    usuarios.append(usuario)
-                    
-                    # Salva os dados atualizados no arquivo
-                    print(m.salvar_dados(usuarios, ler_arquivo))
-                    '''
-                    print(f"Arquivo aberto: {ler_arquivo}.json.\n")
-                    p.codigo = len(usuarios)
+                    # Gerar o próximo código e capturar os dados do novo usuário
+                    p.codigo = gerar_proximo_codigo(usuarios)
                     p.nome = input("Nome: ")
-                    p.cpf = input("cpf: ")
+                    p.cpf = input("CPF: ")
                     p.email = input("Email: ")
-                    p.profissao = input("Profissao: ")
+                    p.profissao = input("Profissão: ")
+                    
+                    # Cria o dicionário do novo usuário
                     usuario = dict(codigo=p.codigo, nome=p.nome, cpf=p.cpf, email=p.email, profissao=p.profissao)
                     usuarios.append(usuario)
+                    
                     print(m.salvar_dados(usuarios, ler_arquivo))
+                    print(f"Usuário {p.nome} gravado com sucesso!")
                 
                 except Exception as e:
                     print(f"Não foi possível gravar os dados. Erro: {e}")
                 finally:
                     continue
             case '4':
+                if not ler_arquivo:
+                    print("Nenhum arquivo foi carregado ou criado. Abra ou crie um arquivo primeiro.")
+                    continue
+                
                 try:
-                    if not ler_arquivo:
-                        print("Nenhum arquivo foi carregado ou criado. Abra ou crie um arquivo primeiro.")
-                    # Garante que o arquivo foi lido
                     usuarios = m.abrir_arquivo(ler_arquivo)
+                    codigo = int(input("Informe o código do usuário que deseja alterar: "))
+                    usuario = encontrar_usuario_por_codigo(usuarios, codigo)
                     
-                    print(f"Gravando no arquivo: {ler_arquivo}.json\n ")
-                     # Define o código do novo usuário como o próximo número na lista
-                    codigo = int(input("Informe o codigo do usuario que deeja alterar: "))
-                    if usuarios[codigo]:
-                        for campo in usuarios[codigo]:
-                            novo_dado = input(f"{campo} atual: {usuarios[codigo].get(campo)}. Novo valor (ou ENTER para manter): ")
+                    if usuario:
+                        for campo, valor in usuario.items():
+                            novo_dado = input(f"{campo.capitalize()} atual: {valor}. Novo valor (ou ENTER para manter): ")
                             if novo_dado:
-                                usuarios[codigo][campo] = novo_dado
+                                usuario[campo] = novo_dado
                         print(m.salvar_dados(usuarios, ler_arquivo))
                         print("Usuário alterado com sucesso!")
                     else:
                         print(f"Usuário com código {codigo} não encontrado.")
                     
-                    print(m.salvar_dados(usuarios, ler_arquivo))
-                             
-                except:
-                     print(f"Não foi possível alterar os dados. Erro: {e}")
+                except Exception as e:
+                    print(f"Não foi possível alterar os dados. Erro: {e}")
                 finally:
                     continue
             case '5':
+                if not ler_arquivo:
+                    print("Nenhum arquivo foi carregado ou criado. Abra ou crie um arquivo primeiro.")
+                    continue
+                
                 try:
-                    if not ler_arquivo:
-                        print("Nenhum arquivo foi carregado ou criado. Abra ou crie um arquivo primeiro.")
-                    # Garante que o arquivo foi lido
                     usuarios = m.abrir_arquivo(ler_arquivo)
-                    
-                    print(f"Gravando no arquivo: {ler_arquivo}.json\n ")
-                     # Define o código do novo usuário como o próximo número na lista
-                    codigo = int(input("Informe o codigo do usuario que deseja EXCLUIR: "))
+                    codigo = int(input("Informe o código do usuário que deseja EXCLUIR: "))
+                    usuario = encontrar_usuario_por_codigo(usuarios, codigo)
 
-                    if usuarios[codigo]:
-                        nome_deletado = usuarios[codigo]['nome']
+                    if usuario:
+                        nome_deletado = usuario['nome']
                         confirmacao = input(f"Apagar {nome_deletado} (s/n)? ").lower()
                         if confirmacao == 's':
-                            del(usuarios[codigo])
+                            usuarios.remove(usuario)
                             print(m.salvar_dados(usuarios, ler_arquivo))
                             print(f"Usuário {nome_deletado} excluído com sucesso!")
                         else:
@@ -142,11 +127,10 @@ if __name__=="__main__":
                     else:
                         print(f"Usuário com código {codigo} não encontrado.")
                     
-                except:
-                     print(f"Não foi possível excluir os dados. Erro: {e}")
+                except Exception as e:
+                    print(f"Não foi possível excluir os dados. Erro: {e}")
                 finally:
                     continue
-                            
             case _:
-                print("Opção invalida")
+                print("Opção inválida")
                 continue

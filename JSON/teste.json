@@ -29,10 +29,10 @@
     },
     {
         "Codigo": 4,
-        "Nome": "Mario Silva",
-        "Cpf": "666555444",
-        "Email": "mario@ese",
-        "Profissao": "matematico"
+        "Nome": "asddee",
+        "Cpf": "111",
+        "Email": "222",
+        "Profissao": "333"
     },
     {
         "codigo": 5,
@@ -42,17 +42,10 @@
         "profissao": "vendedor"
     },
     {
-        "codigo": 8,
-        "nome": "Pinduca",
-        "cpf": "777666555",
-        "email": "usu@email.com",
-        "profissao": "motorista"
-    },
-    {
-        "codigo": 9,
-        "nome": "Alfa Bravo",
-        "cpf": "555444555+66",
-        "email": "rolha@email",
-        "profissao": "faxineiro"
+        "codigo": 6,
+        "nome": "Andre",
+        "cpf": "333222555666",
+        "email": "sem email",
+        "profissao": "sem profissao"
     }
 ]
