@@ -4,6 +4,7 @@ import time
 def main(page: ft.Page):
     page.title = "IMC"
     page.scroll = "adaptive"
+    page.theme_mode = ft.ThemeMode.DARK
     
     def limpar_formulario(e):
         nome.value = ""
@@ -53,19 +54,19 @@ def main(page: ft.Page):
         if peso_float is not None and altura_float is not None:
             imc = peso_float / (altura_float * altura_float)
             if imc < 18.5:
-                result.value = f'{nome.value}, seu peso está abaixo do normal.'
+                result.value = f'{nome.value}, seu peso está abaixo do normal. IMC: {imc}'
             elif imc < 25:
-                result.value = f'{nome.value}: Peso normal.'
+                result.value = f'{nome.value}: Peso normal.   IMC: {imc:.2f}'
             elif imc < 30:
-                result.value = f'{nome.value}: Pré-Obesidade.'
+                result.value = f'{nome.value}: Pré-Obesidade.   IMC: {imc:.2f}'
             elif imc < 35:
-                result.value = f'{nome.value}: Obesidade Grau I.'
+                result.value = f'{nome.value}: Obesidade Grau I.   IMC: {imc:.2f}'
                 result.color = "yellow"
             elif imc < 40:
-                result.value = f'{nome.value}: Obesidade Grau II.'
+                result.value = f'{nome.value}: Obesidade Grau II.   IMC: {imc:.2f}'
                 result.color = "orange"
             else:
-                result.value = f'{nome.value}: Obesidade Grau III.'
+                result.value = f'{nome.value}: Obesidade Grau III.   IMC: {imc:.2f}'
                 result.color = "red"
                 piscar_texto(result, 8)
         
@@ -97,3 +98,5 @@ def main(page: ft.Page):
     page.update()
     
 ft.app(main)
+
+
