@@ -99,4 +99,8 @@ def main(page: ft.Page):
     
 ft.app(main)
 
+'''
+flet pack main.py --icon=myicon.ico  -> para gerar executavel
+
+'''
 
