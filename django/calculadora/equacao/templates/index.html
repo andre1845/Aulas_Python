@@ -1,0 +1,36 @@
+<!-- equacao/templates/equacao/index.html -->
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de Raízes de Equação do Segundo Grau</title>
+    <script>
+        function calcularRaizes() {
+            const a = document.getElementById('a').value;
+            const b = document.getElementById('b').value;
+            const c = document.getElementById('c').value;
+
+            fetch(`/calcular/?a=${a}&b=${b}&c=${c}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.erro) {
+                        document.getElementById('resultado').innerText = data.erro;
+                    } else {
+                        document.getElementById('resultado').innerText = `Raiz 1: ${data.raiz1}, Raiz 2: ${data.raiz2}`;
+                    }
+                })
+                .catch(error => console.error('Erro:', error));
+        }
+    </script>
+</head>
+<body>
+    <h1>Calculadora de Raízes de Equação do Segundo Grau</h1>
+    <label for="a">a: </label><input type="number" id="a" required><br>
+    <label for="b">b: </label><input type="number" id="b" required><br>
+    <label for="c">c: </label><input type="number" id="c" required><br><br>
+    <button onclick="calcularRaizes()">Calcular Raízes</button>
+
+    <h2 id="resultado"></h2>
+</body>
+</html>

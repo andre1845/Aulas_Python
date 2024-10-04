@@ -1,0 +1,30 @@
+[
+    {
+        "codigo": 1,
+        "nome": "Andre 2",
+        "cpf": "111111111-96",
+        "email": "andre@kk.com",
+        "profissao": "Testador"
+    },
+    {
+        "codigo": 2,
+        "nome": "Bruna 2",
+        "cpf": "888777444-96",
+        "email": "bruna@email.com",
+        "profissao": "Vendedora"
+    },
+    {
+        "codigo": 8,
+        "nome": "Bruna 8",
+        "cpf": "888777444-96",
+        "email": "bruna@email.com",
+        "profissao": "Vendedora"
+    },
+    {
+        "codigo": 9,
+        "nome": "Alfredo",
+        "cpf": "333666555-99",
+        "email": "alf@de.cfr",
+        "profissao": "motorista"
+    }
+]
