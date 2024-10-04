@@ -26,8 +26,6 @@ def main(page: ft.Page):
             drive_dia_val = float(drive_dia.value)
             combustivel_valor_val = float(combustivel_valor.value)
            
-           
-            
             drive_total = (distancia_val/velocidade_val)
             litros = (distancia_val/consumo_val)
             custo = (litros * combustivel_valor_val)

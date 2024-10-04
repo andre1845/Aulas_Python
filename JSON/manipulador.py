@@ -12,11 +12,11 @@ class Manipulador:
             
             usuarios = [
                 {
-                    'Codigo': 0,
-                    'Nome': 'Admin',
-                    'CPF': '000.000.000-00',
-                    'E-mail': 'admin@admin.com',
-                    'Profissao': 'Admininstrador'             
+                    'codigo': 0,
+                    'nome': 'Admin',
+                    'cpf': '000.000.000-00',
+                    'email': 'admin@admin.com',
+                    'profissao': 'Admininstrador'             
                 }
             ]
             
